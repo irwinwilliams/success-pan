@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steelpan of Success</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="theater-background">
+    <div class="lighting wash-left"></div>
+    <div class="lighting wash-right"></div>
+    <div class="lighting spotlight"></div>
+  </div>
+  <div class="app-shell">
+    <header class="masthead">
+      <div class="branding">
+        <h1>Steelpan of Success</h1>
+        <p class="tagline">Compose your Calypso of achievement.</p>
+      </div>
+      <div class="status-display">
+        <span id="statusMessage">Tap notes to begin building lyrics.</span>
+      </div>
+    </header>
+    <main class="main-layout">
+      <section class="stage">
+        <div class="pan-wrapper">
+          <div class="pan-shadow"></div>
+          <div class="pan-surface" id="panSurface"></div>
+          <div class="mallet" id="mallet"></div>
+        </div>
+        <div class="visualizer-panel">
+          <canvas id="visualizer" width="520" height="140"></canvas>
+          <div class="meter-label">Audio Visualizer</div>
+        </div>
+      </section>
+      <section class="control-room">
+        <div class="scratchpad">
+          <h2>Lyric Scratchpad</h2>
+          <div id="scratchpadWords" class="scratchpad-words"></div>
+          <div class="scratchpad-actions">
+            <button id="clearWords" class="secondary-button">Clear</button>
+            <button id="undoWord" class="secondary-button">Undo</button>
+          </div>
+        </div>
+        <div class="generation-block">
+          <h2>Song Builder</h2>
+          <div class="builder-controls">
+            <button id="generateSong" class="primary-button">Generate Song</button>
+            <button id="playSong" class="primary-button" disabled>Play Song</button>
+          </div>
+          <div class="slider-group">
+            <label for="tempoSlider">Tempo <span id="tempoValue">110 BPM</span></label>
+            <input type="range" id="tempoSlider" min="80" max="160" value="110">
+          </div>
+          <div class="slider-group">
+            <label for="volumeSlider">Volume <span id="volumeValue">80%</span></label>
+            <input type="range" id="volumeSlider" min="0" max="100" value="80">
+          </div>
+        </div>
+        <div class="lyrics-display">
+          <h2>Generated Lyrics</h2>
+          <div id="lyricsOutput" class="lyrics-box">
+            <em>Play notes on the pan and generate a song to see your lyrics.</em>
+          </div>
+        </div>
+        <div class="reference-panel">
+          <h2>Keyboard Shortcuts</h2>
+          <ul id="keyboardLegend" class="legend-list"></ul>
+          <p class="helper-text">Each key highlights its zone and sounds the tenor note instantly.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>Inspired by the grand stages of Trinidad and Tobago steelpan theaters.</p>
+    </footer>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
