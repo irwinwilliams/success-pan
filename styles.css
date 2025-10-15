@@ -158,9 +158,10 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.1);
   background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.18), rgba(10, 18, 44, 0.45) 80%);
   color: #f6f7ff;
-  font-size: clamp(0.72rem, 1.8vw, 1rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(0.82rem, 1.9vw, 1.18rem);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-weight: 600;
   cursor: pointer;
   transition: transform 0.1s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   display: flex;
@@ -170,6 +171,8 @@ body {
   padding: 12px;
   user-select: none;
   backdrop-filter: blur(2px);
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .pan-note::after {
@@ -178,17 +181,7 @@ body {
   bottom: 6px;
   right: 8px;
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.pan-note::before {
-  content: attr(data-note);
-  position: absolute;
-  top: 6px;
-  left: 10px;
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.42);
 }
 
 .pan-note:hover {
@@ -212,16 +205,19 @@ body {
 .pan-note.tier-middle {
   --note-width: clamp(74px, 16vw, 104px);
   --note-height: clamp(60px, 12vw, 84px);
+  font-size: clamp(0.74rem, 1.6vw, 1rem);
 }
 
 .pan-note.tier-inner {
   --note-width: clamp(62px, 14vw, 88px);
   --note-height: clamp(50px, 12vw, 72px);
+  font-size: clamp(0.68rem, 1.4vw, 0.9rem);
 }
 
 .pan-note.tier-center {
   --note-width: clamp(52px, 12vw, 74px);
   --note-height: clamp(42px, 10vw, 60px);
+  font-size: clamp(0.66rem, 1.2vw, 0.88rem);
 }
 
 .mallet {
@@ -269,6 +265,7 @@ body {
 }
 
 .scratchpad,
+.word-spotlight,
 .generation-block,
 .lyrics-display,
 .reference-panel {
@@ -304,6 +301,44 @@ h2 {
 .scratchpad-words.empty {
   justify-content: center;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.word-spotlight-display {
+  min-height: 96px;
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.22);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.word-spotlight-display .placeholder {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.word-spotlight-display .spotlight-word {
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.word-spotlight-display .spotlight-meta {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.word-spotlight-display .spotlight-meta.subtle {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
 }
 
 .word-chip {

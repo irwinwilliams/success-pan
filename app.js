@@ -1,20 +1,127 @@
-const RAW_NOTES = [
-  { id: "C#6_outer", note: "C#6", word: "Achievement", key: "Q", position: { x: 50.0, y: 11.91 } },
-  { id: "F#5_outer", note: "F#5", word: "Vision", key: "W", position: { x: 69.04, y: 17.02 } },
-  { id: "B5_outer", note: "B5", word: "Innovation", key: "E", position: { x: 82.98, y: 30.96 } },
-  { id: "E5_outer", note: "E5", word: "Strategy", key: "R", position: { x: 88.09, y: 50.0 } },
-  { id: "A4_outer", note: "A4", word: "Focus", key: "T", position: { x: 82.98, y: 69.04 } },
-  { id: "D4_outer", note: "D4", word: "Leadership", key: "Y", position: { x: 69.04, y: 82.98 } },
-  { id: "G3_outer", note: "G3", word: "Resilience", key: "U", position: { x: 50.0, y: 88.09 } },
-  { id: "C3_outer", note: "C3", word: "Growth", key: "I", position: { x: 30.96, y: 82.98 } },
-  { id: "F3_outer", note: "F3", word: "Teamwork", key: "O", position: { x: 17.02, y: 69.04 } },
-  { id: "Bb3_outer", note: "Bb3", word: "Purpose", key: "P", position: { x: 11.91, y: 50.0 } },
-  { id: "Eb4_outer", note: "Eb4", word: "Profit", key: "A", position: { x: 17.02, y: 30.96 } },
-  { id: "G#4_outer", note: "G#4", word: "Determination", key: "S", position: { x: 30.96, y: 17.02 } },
-  { id: "C#5_middle", note: "C#5", word: "Execution", key: "D", position: { x: 56.82, y: 24.53 }, tier: "middle" },
-  { id: "G4_inner", note: "G4", word: "Perseverance", key: "F", position: { x: 50.0, y: 64.65 }, tier: "inner" },
-  { id: "C4_center", note: "C4", word: "Excellence", key: "G", position: { x: 50.0, y: 50.0 }, tier: "center" },
+const OUTER_WORDS = [
+  "Achievement",
+  "Determination",
+  "Creativity",
+  "Momentum",
+  "Innovation",
+  "Strategy",
+  "Leadership",
+  "Perseverance",
+  "Success",
+  "Teamwork",
+  "Purpose",
+  "Resilience",
 ];
+
+const MIDDLE_WORDS = [
+  "Vision",
+  "Progress",
+  "Synergy",
+  "Harmony",
+  "Triumph",
+  "Legacy",
+  "Growth",
+  "Profit",
+  "Execution",
+  "Insight",
+  "Clarity",
+  "Courage",
+];
+
+const INNER_WORDS = ["Focus", "Drive", "Unity", "Balance"];
+const CENTER_WORD = "Excellence";
+
+const SUCCESS_WORDS = [...OUTER_WORDS, ...MIDDLE_WORDS, ...INNER_WORDS, CENTER_WORD];
+
+const KEY_SEQUENCE = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "0",
+  "-",
+  "=",
+  "Q",
+  "W",
+  "E",
+  "R",
+  "T",
+  "Y",
+  "U",
+  "I",
+  "O",
+  "P",
+  "[",
+  "]",
+  "A",
+  "S",
+  "D",
+  "F",
+  "G",
+];
+
+const OUTER_RING = [
+  { note: "C#6", position: { x: 50.0, y: 11.91 }, tier: "outer" },
+  { note: "F#5", position: { x: 69.04, y: 17.02 }, tier: "outer" },
+  { note: "B5", position: { x: 82.98, y: 30.96 }, tier: "outer" },
+  { note: "E5", position: { x: 88.09, y: 50.0 }, tier: "outer" },
+  { note: "A5", position: { x: 82.98, y: 69.04 }, tier: "outer" },
+  { note: "D5", position: { x: 69.04, y: 82.98 }, tier: "outer" },
+  { note: "G5", position: { x: 50.0, y: 88.09 }, tier: "outer" },
+  { note: "C5", position: { x: 30.96, y: 82.98 }, tier: "outer" },
+  { note: "F5", position: { x: 17.02, y: 69.04 }, tier: "outer" },
+  { note: "Bb4", position: { x: 11.91, y: 50.0 }, tier: "outer" },
+  { note: "Eb5", position: { x: 17.02, y: 30.96 }, tier: "outer" },
+  { note: "Ab5", position: { x: 30.96, y: 17.02 }, tier: "outer" },
+];
+
+const MIDDLE_RING = [
+  { note: "B4", position: { x: 56.82, y: 24.53 }, tier: "middle" },
+  { note: "E4", position: { x: 68.64, y: 31.36 }, tier: "middle" },
+  { note: "A4", position: { x: 75.47, y: 43.18 }, tier: "middle" },
+  { note: "D4", position: { x: 75.47, y: 56.82 }, tier: "middle" },
+  { note: "G4", position: { x: 68.64, y: 68.64 }, tier: "middle" },
+  { note: "D5", position: { x: 56.82, y: 75.47 }, tier: "middle" },
+  { note: "G5", position: { x: 43.18, y: 75.47 }, tier: "middle" },
+  { note: "Bb4", position: { x: 31.36, y: 68.64 }, tier: "middle" },
+  { note: "Eb4", position: { x: 24.53, y: 56.82 }, tier: "middle" },
+  { note: "Ab4", position: { x: 24.53, y: 43.18 }, tier: "middle" },
+  { note: "C#5", position: { x: 31.36, y: 31.36 }, tier: "middle" },
+  { note: "F#4", position: { x: 43.18, y: 24.53 }, tier: "middle" },
+];
+
+const INNER_RING = [
+  { note: "C5", position: { x: 50.0, y: 35.35 }, tier: "inner" },
+  { note: "E5", position: { x: 64.65, y: 50.0 }, tier: "inner" },
+  { note: "G4", position: { x: 50.0, y: 64.65 }, tier: "inner" },
+  { note: "D4", position: { x: 35.35, y: 50.0 }, tier: "inner" },
+];
+
+const CENTER_NOTE = [{ note: "C4", position: { x: 50.0, y: 50.0 }, tier: "center" }];
+
+const LAYOUT = [...OUTER_RING, ...MIDDLE_RING, ...INNER_RING, ...CENTER_NOTE];
+
+if (LAYOUT.length !== SUCCESS_WORDS.length || LAYOUT.length !== KEY_SEQUENCE.length) {
+  throw new Error("Layout, words, and keys must be the same length.");
+}
+
+const RAW_NOTES = LAYOUT.map((zone, index) => {
+  const noteLabel = zone.note;
+  return {
+    id: `${noteLabel}_${index}`,
+    note: zone.note,
+    noteLabel,
+    word: SUCCESS_WORDS[index],
+    key: KEY_SEQUENCE[index],
+    position: zone.position,
+    tier: zone.tier,
+  };
+});
 
 const NOTES = RAW_NOTES.map((entry) => ({
   ...entry,
@@ -85,6 +192,7 @@ const statusMessage = document.getElementById("statusMessage");
 const keyboardLegend = document.getElementById("keyboardLegend");
 const visualizerCanvas = document.getElementById("visualizer");
 const visualizerCtx = visualizerCanvas.getContext("2d");
+const wordSpotlight = document.getElementById("wordSpotlight");
 
 const activeKeys = new Set();
 
@@ -99,6 +207,7 @@ function init() {
   drawVisualizer();
   updateTempoLabel();
   updateVolumeLabel();
+  resetWordSpotlight();
 }
 
 function createPanNotes() {
@@ -109,13 +218,14 @@ function createPanNotes() {
     if (note.tier) {
       noteButton.classList.add(`tier-${note.tier}`);
     }
-    noteButton.textContent = note.word;
+    noteButton.textContent = note.noteLabel;
     noteButton.dataset.word = note.word;
     noteButton.dataset.key = note.key.toUpperCase();
-    noteButton.dataset.note = note.note;
+    noteButton.dataset.note = note.noteLabel;
     noteButton.style.setProperty("--x", `${note.position.x}%`);
     noteButton.style.setProperty("--y", `${note.position.y}%`);
-    noteButton.setAttribute("aria-label", `${note.word} — ${note.note}`);
+    noteButton.setAttribute("aria-label", `${note.word} - ${note.noteLabel}`);
+    noteButton.title = `${note.noteLabel} - ${note.word} (Key ${note.key.toUpperCase()})`;
 
     noteButton.addEventListener("pointerdown", (event) => {
       event.preventDefault();
@@ -245,6 +355,7 @@ function handleUserNoteTrigger(note, element, pointerPosition) {
   state.composition = null;
   playButton.disabled = true;
   lyricsOutput.innerHTML = "<em>Generate a song to hear your new phrase.</em>";
+  showWordSpotlight(note);
   updateStatus(`Locked in "${note.word}". Keep the rhythm flowing.`);
   if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
     navigator.vibrate(12);
@@ -349,7 +460,7 @@ function renderKeyboardLegend() {
   keyboardLegend.innerHTML = "";
   NOTES.forEach((note) => {
     const item = document.createElement("li");
-    item.textContent = `${note.key.toUpperCase()} — ${note.word} (${note.note})`;
+    item.textContent = `${note.key.toUpperCase()} - ${note.word} (${note.noteLabel})`;
     keyboardLegend.appendChild(item);
   });
 }
@@ -550,6 +661,7 @@ function schedulePlaybackHighlight(note, startTimestamp) {
   const highlightDelay = Math.max(0, startTimestamp - performance.now());
   const timeoutId = setTimeout(() => {
     element.classList.add("playback-active");
+    showWordSpotlight(note, "playback");
     animateMallet(element);
     setTimeout(() => {
       element.classList.remove("playback-active");
@@ -605,6 +717,28 @@ function updateTempoLabel() {
 
 function updateVolumeLabel() {
   volumeValue.textContent = `${volumeSlider.value}%`;
+}
+
+function resetWordSpotlight() {
+  if (!wordSpotlight) {
+    return;
+  }
+  wordSpotlight.innerHTML = '<span class="placeholder">Tap a note to reveal its success word.</span>';
+}
+
+function showWordSpotlight(note, source = "live") {
+  if (!wordSpotlight) {
+    return;
+  }
+  const keyLabel = /^[a-z]$/i.test(note.key) ? note.key.toUpperCase() : note.key;
+  const fragments = [
+    `<span class="spotlight-word">${note.word}</span>`,
+    `<span class="spotlight-meta">${note.noteLabel} - key ${keyLabel}</span>`,
+  ];
+  if (source === "playback") {
+    fragments.push('<span class="spotlight-meta subtle">Playback</span>');
+  }
+  wordSpotlight.innerHTML = fragments.join("");
 }
 
 function resizeCanvasToDisplaySize() {
